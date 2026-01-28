@@ -74,7 +74,7 @@ def get_weights_and_parameters(task, parameters):
         weights = os.path.join('Denoising', 'pretrained_models', 'FFformer_300000.pth')
         parameters['LayerNorm_type'] = 'BiasFree'
     elif task == 'Exposure':
-        weights = os.path.join('Exposure', 'pretrained_models', 'exposure1.pth')
+        weights = os.path.join('Exposure', 'pretrained_models', 'exposure3.pth')
         parameters['LayerNorm_type'] = 'WithBias'
         parameters['use_enhanced_gfsa'] = False
         parameters['gaussian_kernel_size'] = 3
@@ -145,16 +145,16 @@ if len(files) == 0:
 print(f"Found {len(files)} images to process: {files[:5]}...")  # 显示前5个文件
 
 # Get model weights and parameters
-parameters = {'inp_channels': 3,
-              'out_channels': 3,
-              'dim': 48,
-              'num_blocks': [4, 6, 6, 8],
-              'num_refinement_blocks': 4,
-              'heads': [1, 2, 4, 8],
-              'ffn_expansion_factor': 2.66,
-              'bias': False,
-              'LayerNorm_type': 'WithBias',
-              'dual_pixel_task': False}
+parameters = {'inp_channels':3,
+              'out_channels':3,
+              'dim':24,
+              'num_blocks':[2,2,2],
+              'heads':[1,2,4],
+              'ffn_expansion_factor':2.66,
+              'bias':False,
+              'LayerNorm_type':'WithBias',
+              'dual_pixel_task':False}
+
 
 weights, parameters = get_weights_and_parameters(task, parameters)
 
